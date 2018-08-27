@@ -1,4 +1,4 @@
-package Median_of_Two_Sorted_Arrays;
+package median_of_Two_Sorted_Arrays;
 
 public class Median {
 	public static double get_median(int[] A, int[] B) {
