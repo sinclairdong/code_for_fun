@@ -3,15 +3,13 @@ package weigted_tree;
 public class Node {
 	private Node left;
 	private Node right;
-	private int left_weight;
-	private int right_weight;
+	private int weight;
 
-	public Node(Node left, Node right, int left_weight, int right_weight) {
+	public Node(Node left, Node right, int weight) {
 		super();
 		this.left = left;
 		this.right = right;
-		this.left_weight = left_weight;
-		this.right_weight = right_weight;
+		this.weight = weight;
 	}
 
 	public Node getLeft() {
@@ -30,20 +28,12 @@ public class Node {
 		this.right = right;
 	}
 
-	public int getLeft_weight() {
-		return left_weight;
+	public int getWeight() {
+		return weight;
 	}
 
-	public void setLeft_weight(int left_weight) {
-		this.left_weight = left_weight;
-	}
-
-	public int getRight_weight() {
-		return right_weight;
-	}
-
-	public void setRight_weight(int right_weight) {
-		this.right_weight = right_weight;
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 
 }
