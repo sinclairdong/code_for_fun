@@ -1,11 +1,12 @@
 package hashTable;
 
 public class LinkedList<K, V> {
-	private Node<K, V> head = null;
+	public Node<K, V> head = null;
 
-	public void insert(Node<K, V> newNode) {
-		if (head == null) {
-			head = newNode;
+	public void insert(K key, V value) {
+		Node<K, V> newNode = new Node<>(key, value, null);
+		if (this.head == null) {
+			this.head = newNode;
 		} else {
 			Node<K, V> temp = head;
 			while (temp.hasNext()) {
@@ -18,13 +19,39 @@ public class LinkedList<K, V> {
 	public V lookUp(K key) {
 		Node<K, V> temp = head;
 		V result = null;
-		boolean exit = true;
-		while (temp.hasNext() && exit) {
-			if (temp.getKey().equals(key)) {
-				result = temp.getValue();
-				exit = false;
+		if (temp != null) {
+			boolean exit = true;
+			do {
+				if (temp.getKey().equals(key)) {
+					result = temp.getValue();
+					exit = false;
+				}
+				temp = temp.getNext();
+			} while (temp != null && exit);
+
+		}
+		return result;
+	}
+
+	public boolean delete(K key) {
+		boolean result = false;
+		if (head.getKey().equals(key)) {
+			head = head.getNext();
+			result = true;
+		} else {
+			Node<K, V> prev = head;
+			Node<K, V> temp = head.getNext();
+			boolean exit = true;
+			while (exit && temp != null) {
+				if (temp.getKey().equals(key)) {
+					prev.setNext(temp.getNext());
+					exit = false;
+					result = true;
+				}
+				temp = temp.getNext();
+				prev = prev.getNext();
 			}
-			temp = temp.getNext();
+
 		}
 		return result;
 	}

@@ -38,6 +38,6 @@ public class Node<K, V> {
 	}
 
 	public boolean hasNext() {
-		return next == null;
+		return next != null;
 	}
 }
