@@ -9,20 +9,13 @@ public class Scheduler {
   public List<String> schedule(Item[] items, int budget) {
     initializeRatio(items);
     Arrays.sort(items, new SortbyRatio());
-
     List<String> result = new ArrayList<>();
     int counter = 0;
     while (budget > 0 && counter < items.length) {
-      int total_cost = items[counter].getCost() * items[counter].getQuantity();
-      if (total_cost < budget) {
-        budget -= total_cost;
-        result.add(items[counter].getName() + ":   " + items[counter].getQuantity());
-        items[counter].setQuantity(0);
-      } else if (budget > items[counter].getCost()) {
-        int number = budget / items[counter].getCost();
-        budget -= number * items[counter].getCost();
-        result.add(items[counter].getName() + ":   " + number);
-      }
+      double number =
+          Math.min(items[counter].getQuantity(), (double) budget / items[counter].getCost());
+      budget -= number * items[counter].getCost();
+      result.add(items[counter].getName() + ":   " + number);
       counter++;
     }
     return result;
