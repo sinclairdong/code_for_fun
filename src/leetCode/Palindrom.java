@@ -3,17 +3,17 @@ package leetCode;
 public class Palindrom {
     public String longestPalindrome(String s) {
 
-	return helper(s, 0, s.length() - 1, new String[s.length()][s.length()]);
+	return s.length() == 0 ? "" : helper(s, 0, s.length() - 1, new String[s.length()][s.length()]);
     }
 
     public String helper(String s, int i, int j, String[][] history) {
-
+	System.out.println(i + "              " + j);
 	if (i == j) {
 	    history[i][j] = s.charAt(i) + "";
-	} else if (i - 1 == j) {
-	    history[i][j] = s.charAt(i) == s.charAt(j) ? s.charAt(i) + s.charAt(j) + "" : "";
 	} else if (j < i) {
 	    history[i][j] = "";
+	} else if (i - 1 == j) {
+	    history[i][j] = s.charAt(i) == s.charAt(j) ? s.charAt(i) + s.charAt(j) + "" : "";
 	} else
 
 	if (s.charAt(i) == s.charAt(j)) {
@@ -36,7 +36,7 @@ public class Palindrom {
     }
 
     public static void main(String[] args) {
-	String a = "abcdedba";
+	String a = "";
 	System.out.println(new Palindrom().longestPalindrome(a));
     }
 }
