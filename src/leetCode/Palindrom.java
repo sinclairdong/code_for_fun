@@ -10,8 +10,6 @@ public class Palindrom {
 	System.out.println(i + "              " + j);
 	if (i == j) {
 	    history[i][j] = s.charAt(i) + "";
-	} else if (j < i) {
-	    history[i][j] = "";
 	} else if (i - 1 == j) {
 	    history[i][j] = s.charAt(i) == s.charAt(j) ? s.charAt(i) + s.charAt(j) + "" : "";
 	} else
@@ -36,7 +34,7 @@ public class Palindrom {
     }
 
     public static void main(String[] args) {
-	String a = "";
+	String a = "abcdedba";
 	System.out.println(new Palindrom().longestPalindrome(a));
     }
 }
