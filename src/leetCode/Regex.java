@@ -26,11 +26,9 @@ public class Regex {
     }
 
     public static void main(String[] args) {
-	String a, b, c, d;
+	String a, b;
 	a = "aaca";
 	b = "ab*a*c*a*";
-	c = "";
-	d = "a*b*c*";
 	System.out.println(new Regex().isMatch(a, b));
     }
 }
